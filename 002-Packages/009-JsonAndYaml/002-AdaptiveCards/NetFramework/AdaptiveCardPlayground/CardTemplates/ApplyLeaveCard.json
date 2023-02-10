@@ -1,0 +1,195 @@
+{
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "size": "extraLarge",
+                    "weight": "bolder",
+                    "text": "請假申請"
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "spacing": "medium",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "size": "medium",
+                    "weight": "bolder",
+                    "text": "申請人"
+                },
+                {
+                    "type": "Input.Text",
+                    "id": "Applicant",
+                    "spacing": "small",
+                    "value": "${applicant}"
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "spacing": "Medium",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "size": "Medium",
+                    "weight": "Bolder",
+                    "text": "代理人"
+                },
+                {
+                    "type": "Input.ChoiceSet",
+                    "id": "Agents",
+                    "spacing": "Small",
+                    "value": "${agents[0].id}",
+                    "choices": [
+                        {
+						    "$data": "${agents}",
+                            "title": "${name}",
+                            "value": "${id}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "spacing": "medium",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "size": "medium",
+                    "weight": "bolder",
+                    "text": "請假日期"
+                },
+                {
+                    "type": "Input.Date",
+                    "id": "StartDate",
+                    "spacing": "small",
+                    "value": "${utcNow('yyyy-MM-dd')}"
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "spacing": "medium",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "size": "medium",
+                    "weight": "bolder",
+                    "text": "請假時數 (0.5 ~ 8)"
+                },
+                {
+                    "type": "Input.Number",
+                    "id": "LeaveHours",
+                    "spacing": "small",
+                    "min": 0.5,
+                    "max": 8,
+                    "placeholder": "Enter a Leave Time",
+                    "value": "${leaveHours}"
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "spacing": "medium",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "size": "medium",
+                    "weight": "bolder",
+                    "text": "假別"
+                },
+                {
+                    "type": "Input.ChoiceSet",
+                    "id": "${if(sex == '男', 'LeaveType', 'LeaveTypeHidden')}",
+                    "$when": "${sex == '男'}",
+                    "spacing": "Small",
+                    "value": "${leaveType}",
+                    "choices": [
+                        {
+                            "title": "特休假",
+                            "value": "特休假"
+                        },
+                        {
+                            "title": "事假",
+                            "value": "事假"
+                        },
+                        {
+                            "title": "病假",
+                            "value": "病假"
+                        }
+                    ]
+                },
+                {
+                    "type": "Input.ChoiceSet",
+                    "id": "${if(sex == '女', 'LeaveType', 'LeaveTypeHidden')}",
+                    "$when": "${sex == '女'}",
+                    "spacing": "Small",
+                    "value": "${leaveType}",
+                    "choices": [
+                        {
+                            "title": "特休假",
+                            "value": "特休假"
+                        },
+                        {
+                            "title": "事假",
+                            "value": "事假"
+                        },
+                        {
+                            "title": "病假",
+                            "value": "病假"
+                        },
+                        {
+                            "title": "生理假",
+                            "value": "生理假"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "spacing": "medium",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "size": "medium",
+                    "weight": "bolder",
+                    "text": "請假事由"
+                },
+                {
+                    "type": "Input.Text",
+                    "id": "Subject",
+                    "spacing": "small",
+                    "isMultiline": true,
+                    "maxLength": 250,
+                    "placeholder": "請在這裡輸入請假事由",
+                    "value": "${subject}"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "送出",
+            "data": {
+                "Action": "Send"
+            }
+        },
+        {
+            "type": "Action.Submit",
+            "title": "取消",
+            "data": {
+                "Action": "Quit"
+            }
+        }
+    ]
+}

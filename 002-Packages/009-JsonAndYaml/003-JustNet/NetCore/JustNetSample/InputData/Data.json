@@ -1,0 +1,40 @@
+{
+    "Query": "你是誰啊？",
+    "TopAnswer": {
+        "Type": "text",
+        "Question": "你還好嗎?",
+        "Answer": "你問了一個好問題",
+        "Value": "",
+        "Confidence": "0.87"
+    },
+    "OtherAnswers": [
+        {
+            "Type": "text",
+            "Question": "我是誰？",
+            "Answer": "電影─我是誰？",
+            "Value": "",
+            "Confidence": "0.78"
+        },
+        {
+            "Type": "text",
+            "Question": "Google",
+            "Answer": "這是一個殘念的問題，何不問問 [Google大神](https://google.com.tw)",
+            "Value": "",
+            "Confidence": "0.38"
+        },
+        {
+            "Type": "link",
+            "Question": "問天氣",
+            "Answer": "Google 天氣",
+            "Value": "https://www.google.com.tw/search?q=天氣",
+            "Confidence": "0.04"
+        },
+        {
+            "Type": "flow",
+            "Question": "開始請假",
+            "Answer": "點擊這裡，開始請假",
+            "Value": "flow_000002",
+            "Confidence": "0.01"
+        }
+    ]
+}

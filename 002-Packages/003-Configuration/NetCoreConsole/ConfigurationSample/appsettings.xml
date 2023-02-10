@@ -1,0 +1,13 @@
+<Settings>
+	<ConnectionStrings>
+		<Default>Data Source=(localdb)\\ProjectsV13;Initial Catalog=MyDB;Application Name=MyDB</Default>
+	</ConnectionStrings>
+	
+	<Logging>
+		<Default>Warning</Default>
+	</Logging>
+	
+	<MySetting>
+		<Phone>0806449</Phone>
+	</MySetting>
+</Settings>

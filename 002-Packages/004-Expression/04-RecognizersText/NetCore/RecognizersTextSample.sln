@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.902
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecognizersTextSample", "RecognizersTextSample\RecognizersTextSample.csproj", "{706CA52A-5F90-408F-A3C9-D61D0D4D0F36}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenCC-NET", "..\Commons\OpenCC-NET\OpenCC-NET.csproj", "{A5322044-AF88-494C-ADA7-2209FE3FED52}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{706CA52A-5F90-408F-A3C9-D61D0D4D0F36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{706CA52A-5F90-408F-A3C9-D61D0D4D0F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{706CA52A-5F90-408F-A3C9-D61D0D4D0F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{706CA52A-5F90-408F-A3C9-D61D0D4D0F36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5322044-AF88-494C-ADA7-2209FE3FED52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5322044-AF88-494C-ADA7-2209FE3FED52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5322044-AF88-494C-ADA7-2209FE3FED52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5322044-AF88-494C-ADA7-2209FE3FED52}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92FBD630-35CF-44EE-81D1-4FBF05E51695}
+	EndGlobalSection
+EndGlobal

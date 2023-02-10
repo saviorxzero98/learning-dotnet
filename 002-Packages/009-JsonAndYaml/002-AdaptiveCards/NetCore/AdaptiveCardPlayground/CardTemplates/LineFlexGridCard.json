@@ -1,0 +1,146 @@
+﻿{
+    "type": "bubble",
+    "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+            {
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "數字",
+                                "weight": "bold",
+                                "align": "center"
+                            }
+                        ],
+                        "borderWidth": "normal",
+                        "borderColor": "#000000"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "名稱",
+                                "weight": "bold",
+                                "align": "center"
+                            }
+                        ],
+                        "borderWidth": "normal",
+                        "borderColor": "#000000"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "花色",
+                                "weight": "bold",
+                                "align": "center"
+                            }
+                        ],
+                        "borderWidth": "normal",
+                        "borderColor": "#000000"
+                    }
+                ],
+                "backgroundColor": "#D9D9D9"
+            },
+            {
+                "$data": "${Cards}",
+                "type": "box",
+                "layout": "horizontal",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "$when": "${or(equals(Style, '愛心'), equals(Style, '方塊'))}",
+                                "text": "${string(Id)}",
+                                "color": "#FF0000",
+                                "align": "end"
+                            },
+                            {
+                                "type": "text",
+                                "$when": "${or(equals(Style, '黑桃'), equals(Style, '梅花'))}",
+                                "text": "${string(Id)}",
+                                "color": "#000000",
+                                "align": "end"
+                            },
+                            {
+                                "type": "text",
+                                "$when": "${equals(Style, '無')}",
+                                "text": "${string(Id)}",
+                                "color": "#0000FF",
+                                "align": "end"
+                            }
+                        ],
+                        "borderWidth": "normal",
+                        "borderColor": "#000000"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "$when": "${or(equals(Style, '愛心'), equals(Style, '方塊'))}",
+                                "text": "${Name}",
+                                "color": "#FF0000"
+                            },
+                            {
+                                "type": "text",
+                                "$when": "${or(equals(Style, '黑桃'), equals(Style, '梅花'))}",
+                                "text": "${Name}",
+                                "color": "#000000"
+                            },
+                            {
+                                "type": "text",
+                                "$when": "${equals(Style, '無')}",
+                                "text": "${Name}",
+                                "color": "#0000FF"
+                            }
+                        ],
+                        "borderWidth": "normal",
+                        "borderColor": "#000000"
+                    },
+                    {
+                        "type": "box",
+                        "layout": "vertical",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "$when": "${or(equals(Style, '愛心'), equals(Style, '方塊'))}",
+                                "text": "${Style}",
+                                "color": "#FF0000"
+                            },
+                            {
+                                "type": "text",
+                                "$when": "${or(equals(Style, '黑桃'), equals(Style, '梅花'))}",
+                                "text": "${Style}",
+                                "color": "#000000"
+                            },
+                            {
+                                "type": "text",
+                                "$when": "${equals(Style, '無')}",
+                                "text": "${Style}",
+                                "color": "#0000FF"
+                            }
+                        ],
+                        "borderWidth": "normal",
+                        "borderColor": "#000000"
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,53 @@
+{
+    "type": "AdaptiveCard",
+    "version": "1.0",
+    "body": [
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "我覺得最接近的答案",
+                    "weight": "Bolder",
+                    "size": "Medium"
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "你問了一個好問題"
+                }
+            ],
+            "style": "emphasis"
+        },
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "TextBlock",
+                    "text": "推薦主題",
+                    "size": "Medium"
+                }
+            ]
+        },
+        {
+            "type": "Container",
+            "items": {
+                "#loop($.OtherAnswers)": {
+                    "type": "Container",
+                    "items": [
+                        {
+                            "type": "TextBlock",
+                            "text": "#currentvalueatpath($.Question)"
+                        }
+                    ],
+                    "style": "emphasis"
+                }
+            }
+        }
+    ],
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json"
+}

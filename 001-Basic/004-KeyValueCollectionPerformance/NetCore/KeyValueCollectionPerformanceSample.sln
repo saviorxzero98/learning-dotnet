@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeyValueCollectionPerformanceSample", "KeyValueCollectionPerformanceSample\KeyValueCollectionPerformanceSample.csproj", "{F50F60E2-4C0C-4785-B0A7-46D10D47C022}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F50F60E2-4C0C-4785-B0A7-46D10D47C022}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F50F60E2-4C0C-4785-B0A7-46D10D47C022}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F50F60E2-4C0C-4785-B0A7-46D10D47C022}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F50F60E2-4C0C-4785-B0A7-46D10D47C022}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {281731CD-F6CE-45CF-BA1D-F3C26181BC0A}
+	EndGlobalSection
+EndGlobal

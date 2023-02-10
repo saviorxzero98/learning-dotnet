@@ -1,0 +1,146 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2",
+    "body": [
+        {
+            "type": "Container",
+            "items": [
+                {
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 20,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "horizontalAlignment": "Right",
+                                    "size": "Medium",
+                                    "weight": "Bolder",
+                                    "text": "數字"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 60,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "size": "Medium",
+                                    "weight": "Bolder",
+                                    "text": "名稱"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 60,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "size": "Medium",
+                                    "weight": "Bolder",
+                                    "text": "花色"
+                                }
+                            ]
+                        }
+                    ],
+                    "style": "emphasis"
+                },
+                {
+                    "$data": "${Cards}",
+                    "type": "ColumnSet",
+                    "columns": [
+                        {
+                            "type": "Column",
+                            "width": 20,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "$when": "${or(equals(Style, '愛心'), equals(Style, '方塊'))}",
+                                    "text": "${string(Id)}",
+                                    "horizontalAlignment": "Right",
+                                    "weight": "Bolder",
+                                    "color": "Attention"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "$when": "${or(equals(Style, '黑桃'), equals(Style, '梅花'))}",
+                                    "text": "${string(Id)}",
+                                    "horizontalAlignment": "Right",
+                                    "weight": "Bolder",
+                                    "color": "Dark"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "$when": "${equals(Style, '無')}",
+                                    "text": "${string(Id)}",
+                                    "horizontalAlignment": "Right",
+                                    "weight": "Bolder",
+                                    "color": "Accent"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 60,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "$when": "${or(equals(Style, '愛心'), equals(Style, '方塊'))}",
+                                    "text": "${Name}",
+                                    "weight": "Bolder",
+                                    "color": "Attention"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "$when": "${or(equals(Style, '黑桃'), equals(Style, '梅花'))}",
+                                    "text": "${Name}",
+                                    "weight": "Bolder",
+                                    "color": "Dark"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "$when": "${equals(Style, '無')}",
+                                    "text": "${Name}",
+                                    "weight": "Bolder",
+                                    "color": "Accent"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Column",
+                            "width": 60,
+                            "items": [
+                                {
+                                    "type": "TextBlock",
+                                    "$when": "${or(equals(Style, '愛心'), equals(Style, '方塊'))}",
+                                    "text": "${Style}",
+                                    "weight": "Bolder",
+                                    "color": "Attention"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "$when": "${or(equals(Style, '黑桃'), equals(Style, '梅花'))}",
+                                    "text": "${Style}",
+                                    "weight": "Bolder",
+                                    "color": "Dark"
+                                },
+                                {
+                                    "type": "TextBlock",
+                                    "$when": "${equals(Style, '無')}",
+                                    "text": "${Style}",
+                                    "weight": "Bolder",
+                                    "color": "Accent"
+                                }
+                            ]
+                        }
+                    ],
+                    "style": "warning"
+                }
+            ]
+        }
+    ]
+}

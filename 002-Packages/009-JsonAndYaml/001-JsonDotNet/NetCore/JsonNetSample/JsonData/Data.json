@@ -1,0 +1,19 @@
+{
+    "Id": "Node Root",
+    "Children": [
+        {
+            "Id": "Node 1",
+            "Children": [
+                {
+                    "Id": "Node 2",
+                    "Children": [
+                        {
+                            "Id": "Node 3",
+                            "Children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
