@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1082
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatchUnhandledExceptions", "CatchUnhandledExceptions\CatchUnhandledExceptions.csproj", "{0F547089-7C6B-4605-851A-794862DBE3D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetApplicationError", "AspNetApplicationError\AspNetApplicationError.csproj", "{ADCCE546-6607-48B0-A9FD-3B9EB76FC010}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatchUnhandledExceptionsWinForm", "CatchUnhandledExceptionsWinForm\CatchUnhandledExceptionsWinForm.csproj", "{BBBBE531-177C-4D52-9AA7-00B802A2B102}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0F547089-7C6B-4605-851A-794862DBE3D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F547089-7C6B-4605-851A-794862DBE3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F547089-7C6B-4605-851A-794862DBE3D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F547089-7C6B-4605-851A-794862DBE3D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADCCE546-6607-48B0-A9FD-3B9EB76FC010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADCCE546-6607-48B0-A9FD-3B9EB76FC010}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADCCE546-6607-48B0-A9FD-3B9EB76FC010}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADCCE546-6607-48B0-A9FD-3B9EB76FC010}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBBBE531-177C-4D52-9AA7-00B802A2B102}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBBBE531-177C-4D52-9AA7-00B802A2B102}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBBBE531-177C-4D52-9AA7-00B802A2B102}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBBBE531-177C-4D52-9AA7-00B802A2B102}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C700F5A6-5D36-47A1-AB56-9B1AB5D9358A}
+	EndGlobalSection
+EndGlobal
