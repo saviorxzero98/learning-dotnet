@@ -1,0 +1,20 @@
+﻿OrganizationUnits:
+  - Id: "root_ou"
+    Name: "Root OU"
+    Children:
+      - Id: "root_001"
+        Name: "Root 001"
+        Children: []
+      - Id: "root_002"
+        Name: "Root 002"
+        Children: []
+Users:
+  - Id: "user_001"
+    Name: "User 001"
+  - Id: "user_002"
+    Name: "User 002"
+  - Id: "user_003"
+    Name: "User 003"
+Roles:
+  - Id: "role_0001"
+    Name: "Role 001"
