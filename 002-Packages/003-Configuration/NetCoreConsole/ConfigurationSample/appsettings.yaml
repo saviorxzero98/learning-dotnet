@@ -1,0 +1,9 @@
+﻿ConnectionStrings:
+    Default: "Data Source=(localdb)\\ProjectsV13;Initial Catalog=MyDB;Application Name=MyDB"
+    SqlServer: "Data Source=DemoDB;Initial Catalog=Demo; User ID=sa;Password=R/K6cDXvNkQY0UtdQ9nwYB==;Encrypt=True;"
+    PostgreSql: "Server=127.0.0.1;Port=5432;Database=DemoDB;User Id=postgres;Password=R/K6cDXvNkQY0UtdQ9nwYB==;Encrypt=True;"
+Logging:
+    LogLevel:
+        Default: "Warning"
+MySetting:
+    Phone: "0806449"

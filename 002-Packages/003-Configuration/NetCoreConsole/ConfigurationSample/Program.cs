@@ -1,7 +1,6 @@
 ﻿using ConnectionStringTool;
 using Microsoft.Extensions.Configuration;
 using System;
-using System.Configuration;
 
 namespace ConfigurationSample
 {
@@ -21,6 +20,9 @@ namespace ConfigurationSample
             // [方法四] 使用 appsettings.xml
             UseAppSettingXml();
 
+            // [方法五] 使用 appsettings.yaml
+            UseAppSettingYaml();
+
             // 使用密碼加密的連線字串
             UseEncryptConnectionStirng();
         }
@@ -33,10 +35,10 @@ namespace ConfigurationSample
             Console.WriteLine($"===== app.config =====");
 
             // (a) 取得 App Settings
-            var mySetting = ConfigurationManager.AppSettings.Get("MySetting");
+            var mySetting = System.Configuration.ConfigurationManager.AppSettings.Get("MySetting");
 
             // (b) 取得資料庫連線字串
-            var myConnection = ConfigurationManager.ConnectionStrings["MY_DB"].ToString();
+            var myConnection = System.Configuration.ConfigurationManager.ConnectionStrings["MY_DB"].ToString();
 
             Console.WriteLine($"App.config AppSetting : {mySetting}");
             Console.WriteLine($"App.config ConnectionString : {myConnection}");
@@ -107,6 +109,33 @@ namespace ConfigurationSample
             IConfiguration config = new ConfigurationBuilder().AddXmlFile("appsettings.xml",
                                                                            optional: true,
                                                                            reloadOnChange: true)
+                                                              .Build();
+
+            // 2. 透過 IConfiguration 存取
+            // (a) 設定資料自動 Bind 到 物件
+            MySetting mySetting = config.GetSection("MySetting").Get<MySetting>();
+
+            // (b) 直接取得設定資料值
+            string myPhone = config.GetSection("MySetting:Phone").Value;
+
+            // (c) 取得資料庫連線字串
+            string myConnection = config.GetConnectionString("Default");
+
+            Console.WriteLine($"AppSetting : {mySetting}");
+            Console.WriteLine($"ConnectionString : {myConnection}");
+        }
+
+        /// <summary>
+        /// [方法五] 使用 appsettings.yaml
+        /// </summary>
+        static void UseAppSettingYaml()
+        {
+            Console.WriteLine($"\n===== appsettings.yaml =====");
+
+            // 1.建立 IConfiguration
+            IConfiguration config = new ConfigurationBuilder().AddYamlFile("appsettings.yaml",
+                                                                            optional: true,
+                                                                            reloadOnChange: true)
                                                               .Build();
 
             // 2. 透過 IConfiguration 存取
