@@ -17,7 +17,7 @@
 
 | Package                                                      | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [Adaptive Card Templating](https://www.nuget.org/packages/AdaptiveCards.Templating) | ‧主要用於 [Adaptive Card](https://adaptivecards.io) JSON範本套版，也可以用於一般 JSON 檔案套版，例如：[LINE Flex Message](https://developers.line.biz/en/docs/messaging-api/flex-message-elements/)<br />‧內建的使用 [Adaptive Expression](https://learn.microsoft.com/en-us/azure/bot-service/adaptive-expressions/adaptive-expressions-prebuilt-functions?view=azure-bot-service-4.0) 來處理一些 Inline 運算<br />‧[使用範例](../../009-JsonAndYaml/AdaptiveCards) |
+| [Adaptive Card Templating](https://www.nuget.org/packages/AdaptiveCards.Templating) | ‧主要用於 [Adaptive Card](https://adaptivecards.io) JSON範本套版，也可以用於一般 JSON 檔案套版<br />　　‧例如：[LINE Flex Message](https://developers.line.biz/en/docs/messaging-api/flex-message-elements/)、[Slack Block Kit](https://api.slack.com/block-kit)<br />‧內建的使用 [Adaptive Expression](https://learn.microsoft.com/en-us/azure/bot-service/adaptive-expressions/adaptive-expressions-prebuilt-functions?view=azure-bot-service-4.0) 來處理一些 Inline 運算<br />‧[使用範例](../../009-JsonAndYaml/AdaptiveCards) |
 | [Just.Net](https://github.com/WorkMaze/JUST.net )            | ‧用於 JSON 格式轉換，使用這樣的格式轉換來達到範本套版<br />‧[使用範例](../../009-JsonAndYaml/JustNet) |
 
 
