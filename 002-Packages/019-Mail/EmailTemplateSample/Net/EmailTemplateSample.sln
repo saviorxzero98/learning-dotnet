@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluidSample", "FluidSample\FluidSample.csproj", "{AD3368B3-9A66-468A-8D48-AB4B6E35CE42}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScribanSample", "ScribanSample\ScribanSample.csproj", "{B6CB19C4-ADB1-4232-9790-CA99732646AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD3368B3-9A66-468A-8D48-AB4B6E35CE42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD3368B3-9A66-468A-8D48-AB4B6E35CE42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD3368B3-9A66-468A-8D48-AB4B6E35CE42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD3368B3-9A66-468A-8D48-AB4B6E35CE42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6CB19C4-ADB1-4232-9790-CA99732646AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6CB19C4-ADB1-4232-9790-CA99732646AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6CB19C4-ADB1-4232-9790-CA99732646AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6CB19C4-ADB1-4232-9790-CA99732646AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3478C984-C4BA-4956-BF19-EA7852151087}
+	EndGlobalSection
+EndGlobal
