@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ExcelSampleData
+﻿namespace SampleData
 {
-    public class ContactData
+    public static class TestData
     {
         public static List<Contact> ContactList
         {

@@ -2,18 +2,19 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Npgg.ConsoleTable" Version="1.4.2" />
-    <PackageReference Include="NPOI" Version="2.5.4" />
-    <PackageReference Include="Npoi.Mapper" Version="3.5.1" />
+    <PackageReference Include="NPOI" Version="2.6.2" />
+    <PackageReference Include="Npoi.Mapper" Version="6.2.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ExcelData\ExcelData.csproj" />
+    <ProjectReference Include="..\Commons\ExcelLibSampleCommon\ExcelLibSampleCommon.csproj" />
+    <ProjectReference Include="..\Commons\SampleData\SampleData.csproj" />
   </ItemGroup>
 
   <ItemGroup>
