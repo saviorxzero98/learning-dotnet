@@ -19,6 +19,10 @@ namespace WebApiSample.Controllers
             _idGenerator = idGenerator;
         }
 
+        /// <summary>
+        /// 取得版本號
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("version")]
         public ActionResult GetVersion()
@@ -27,6 +31,10 @@ namespace WebApiSample.Controllers
             return Ok(version);
         }
 
+        /// <summary>
+        /// 取得 GUID
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("newid")]
         public ActionResult GetNewId()
@@ -35,6 +43,11 @@ namespace WebApiSample.Controllers
             return Ok(result);
         }
 
+        /// <summary>
+        /// 計算圓面積
+        /// </summary>
+        /// <param name="info"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("circle")]
         public ActionResult CalcCircleArea([FromBody] CircleInfo info)
