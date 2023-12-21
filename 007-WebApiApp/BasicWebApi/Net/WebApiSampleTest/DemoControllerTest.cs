@@ -29,7 +29,7 @@ namespace WebApiSampleTest
         }
 
         [Fact]
-        public void TestGetCountry()
+        public void TestGetBook()
         {
             // Act
             var apiClient = new HttpApiClient(_client);
@@ -37,26 +37,26 @@ namespace WebApiSampleTest
             {
                 { "Authorization", "ABC" }
             };
-            HttpResponseMessage response = apiClient.Get("api/country", headers);
-            var country = response.GetContentModel<CountryProfile>();
+            HttpResponseMessage response = apiClient.Get("api/book", headers);
+            var book = response.GetContentModel<Book>();
 
             // Assert
             Assert.True(response.IsSuccessStatusCode);
-            Assert.NotNull(country);
+            Assert.NotNull(book);
         }
 
         [Fact]
-        public void TestGetCountryWithUnauthorization()
+        public void TestGetBookWithUnauthorization()
         {
             // Act
             var apiClient = new HttpApiClient(_client);
-            HttpResponseMessage response = apiClient.Get("api/country");
-            var country = response.GetContentModel<CountryProfile>();
+            HttpResponseMessage response = apiClient.Get("api/book");
+            var book = response.GetContentModel<Book>();
 
             // Assert
             Assert.False(response.IsSuccessStatusCode);
             Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
-            Assert.Null(country);
+            Assert.Null(book);
         }
 
         [Fact]

@@ -4,19 +4,31 @@ using Newtonsoft.Json.Linq;
 
 namespace WebApiSample.Controllers
 {
+    /// <summary>
+    /// Webhook
+    /// </summary>
     [Route("api")]
     [ApiController]
-    public class EtaDemoController : ControllerBase
+    public class WebhookController : ControllerBase
     {
+        /// <summary>
+        /// GET Webhook
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        [Route("etl/webhook")]
+        [Route("webhook")]
         public ActionResult Get()
         {
             return Ok();
         }
 
+        /// <summary>
+        /// POST Webhook
+        /// </summary>
+        /// <param name="body"></param>
+        /// <returns></returns>
         [HttpPost]
-        [Route("etl/webhook")]
+        [Route("webhook")]
         public ActionResult Post([FromBody] JToken body)
         {
             string raw = JsonConvert.SerializeObject(body);

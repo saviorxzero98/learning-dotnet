@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading;
 using WebApiSample.Models;
 
 namespace WebApiSample.Controllers
@@ -167,6 +166,7 @@ namespace WebApiSample.Controllers
             }
         }
 
+        [NonAction]
         protected string Hash(string plainText)
         {
             // Hash
@@ -181,7 +181,8 @@ namespace WebApiSample.Controllers
                          .Replace("+", "-");
         }
 
-        public (bool result, string value) GetHeader(HttpRequest request, string key)
+        [NonAction]
+        protected (bool result, string value) GetHeader(HttpRequest request, string key)
         {
             if (request.Headers.ContainsKey(key))
             {
