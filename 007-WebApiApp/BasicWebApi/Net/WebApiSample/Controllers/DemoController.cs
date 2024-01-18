@@ -1,11 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using WebApiSample.Models;
 using WebApiSample.Toolkits;
 
@@ -25,32 +21,12 @@ namespace WebApiSample.Controllers
             _configuration = configuration;
         }
 
-        /// <summary>
-        /// Test
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="action"></param>
-        /// <returns></returns>
-        [HttpGet]
-        [Route("test/{id}")]
-        public ActionResult GetId(string id, [FromQuery] string action)
-        {
-            if (string.IsNullOrEmpty(action))
-            {
-                return Ok(id);
-            }
-            else
-            {
-                return StatusCode(500);
-                //return Ok(new { id = id, actopm = action });
-            }
-        }
 
         /// <summary>
         /// Get Version
         /// </summary>
         /// <returns></returns>
-        // GET api/version
+        /// GET api/version
         [HttpGet]
         [Route("version")]
         public ActionResult GetVersion()
