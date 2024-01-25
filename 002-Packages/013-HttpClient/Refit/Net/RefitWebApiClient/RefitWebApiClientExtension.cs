@@ -30,8 +30,9 @@ namespace RefitWebApiClient
             // 加入 API Header 設定器
             AddApiHeaderContextAccessor(services);
 
-            // 加入 NornsOG API Client
+            // 加入 API Client
             AddRefitClient<IBookAppService>(services, settings, httpClientName);
+            AddRefitClient<IUserAppService>(services, settings, httpClientName);
 
             return services;
         }

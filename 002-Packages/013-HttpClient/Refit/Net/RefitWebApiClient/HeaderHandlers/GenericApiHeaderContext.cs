@@ -1,4 +1,6 @@
-﻿namespace RefitWebApiClient.HeaderHandlers
+﻿using System.Text.Json.Serialization;
+
+namespace RefitWebApiClient.HeaderHandlers
 {
     public class GenericApiHeaderContext
     {

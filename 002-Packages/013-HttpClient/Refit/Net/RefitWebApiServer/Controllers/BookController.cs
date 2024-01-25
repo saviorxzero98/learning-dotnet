@@ -6,7 +6,7 @@ using RefitWebApiServer.Models;
 
 namespace RefitWebApiServer.Controllers
 {
-    [Route("api")]
+    [Route(IBookAppService.BasePath)]
     [ApiController]
     public class BookController : ControllerBase
     {
@@ -21,7 +21,7 @@ namespace RefitWebApiServer.Controllers
         }
 
         [HttpGet]
-        [Route("book/{id}")]
+        [Route(IBookAppService.ServiceNameWithId)]
         public async Task<ActionResult> GetAsync(string id)
         {
             var result = await _appService.GetAsync(id);
@@ -30,7 +30,7 @@ namespace RefitWebApiServer.Controllers
 
 
         [HttpGet]
-        [Route("book")]
+        [Route(IBookAppService.ServiceName)]
         public async Task<ActionResult> GetListAsync([FromQuery(Name = nameof(PageDataQuery.Limit))] string? limitText,
                                                      [FromQuery(Name = nameof(PageDataQuery.Offset))] string? offsetText)
         {
@@ -50,7 +50,7 @@ namespace RefitWebApiServer.Controllers
         }
 
         [HttpPost]
-        [Route("book")]
+        [Route(IBookAppService.ServiceName)]
         public async Task<ActionResult> AddAsync([FromBody] AddBookRequest book)
         {
             if (book == null)
@@ -63,7 +63,7 @@ namespace RefitWebApiServer.Controllers
         }
 
         [HttpPut]
-        [Route("book/{id}")]
+        [Route(IBookAppService.ServiceNameWithId)]
         public async Task<ActionResult> UpdateAsync(string id, [FromBody] UpdateBookRequest book)
         {
             if (book == null)
@@ -77,7 +77,7 @@ namespace RefitWebApiServer.Controllers
         }
 
         [HttpDelete]
-        [Route("book/{id}")]
+        [Route(IBookAppService.ServiceNameWithId)]
         public async Task<ActionResult> DeleteAsync(string id)
         {
             await _appService.DeleteAsync(id);

@@ -25,8 +25,11 @@ namespace RefitWebApiServer
                 config.Description = "這是一個 Web API 範例";
             });
 
+            services.AddHttpContextAccessor();
+
             // Add Application Service
             services.AddTransient<IBookAppService, BookAppService>();
+            services.AddTransient<IUserAppService, UserAppService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

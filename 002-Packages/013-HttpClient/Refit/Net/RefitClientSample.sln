@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RefitWebApiClientSample", "RefitWebApiClientSample\RefitWebApiClientSample.csproj", "{A564266E-3A34-4421-9F37-BE538E67CCFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "client", "client", "{097BBB3F-7602-437E-9BAA-E06A1D9727B4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RefitWebApiCore", "RefitWebApiCore\RefitWebApiCore.csproj", "{4470DFE4-78EA-407E-BE04-D23B87FF772D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RefitWebApiClient", "RefitWebApiClient\RefitWebApiClient.csproj", "{EF7D1DAD-BC63-487F-86AA-787C613F0DA2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A564266E-3A34-4421-9F37-BE538E67CCFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A564266E-3A34-4421-9F37-BE538E67CCFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A564266E-3A34-4421-9F37-BE538E67CCFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A564266E-3A34-4421-9F37-BE538E67CCFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4470DFE4-78EA-407E-BE04-D23B87FF772D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4470DFE4-78EA-407E-BE04-D23B87FF772D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4470DFE4-78EA-407E-BE04-D23B87FF772D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4470DFE4-78EA-407E-BE04-D23B87FF772D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF7D1DAD-BC63-487F-86AA-787C613F0DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF7D1DAD-BC63-487F-86AA-787C613F0DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF7D1DAD-BC63-487F-86AA-787C613F0DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF7D1DAD-BC63-487F-86AA-787C613F0DA2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4470DFE4-78EA-407E-BE04-D23B87FF772D} = {097BBB3F-7602-437E-9BAA-E06A1D9727B4}
+		{EF7D1DAD-BC63-487F-86AA-787C613F0DA2} = {097BBB3F-7602-437E-9BAA-E06A1D9727B4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D664D8F-68D1-4353-A120-43AB1B37C0CD}
+	EndGlobalSection
+EndGlobal
