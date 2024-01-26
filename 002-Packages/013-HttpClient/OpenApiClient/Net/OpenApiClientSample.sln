@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RefitterApiClientSample", "RefitterApiClientSample\RefitterApiClientSample.csproj", "{DC8F7C9C-5565-470F-8B4E-026123E74227}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KiotaApiClientSample", "KiotaApiClientSample\KiotaApiClientSample.csproj", "{8194360B-D824-4AF0-AB37-958CC4CABB48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenApiGeneratorClientSample", "OpenApiGeneratorClientSample\OpenApiGeneratorClientSample.csproj", "{FA439A24-A4CF-46E1-9642-FF0C5E2642CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC8F7C9C-5565-470F-8B4E-026123E74227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC8F7C9C-5565-470F-8B4E-026123E74227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC8F7C9C-5565-470F-8B4E-026123E74227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC8F7C9C-5565-470F-8B4E-026123E74227}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8194360B-D824-4AF0-AB37-958CC4CABB48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8194360B-D824-4AF0-AB37-958CC4CABB48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8194360B-D824-4AF0-AB37-958CC4CABB48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8194360B-D824-4AF0-AB37-958CC4CABB48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA439A24-A4CF-46E1-9642-FF0C5E2642CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA439A24-A4CF-46E1-9642-FF0C5E2642CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA439A24-A4CF-46E1-9642-FF0C5E2642CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA439A24-A4CF-46E1-9642-FF0C5E2642CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F089AC06-A2E9-400F-8742-00673E247428}
+	EndGlobalSection
+EndGlobal
