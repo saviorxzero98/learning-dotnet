@@ -2,7 +2,7 @@
 using RefitWebApiCore.AppServices;
 using RefitWebApiCore.Models;
 using RefitWebApiCore.Models.Books;
-using RefitWebApiServer.Models;
+using System.Net.Mime;
 
 namespace RefitWebApiServer.Controllers
 {
@@ -22,67 +22,58 @@ namespace RefitWebApiServer.Controllers
 
         [HttpGet]
         [Route(IBookAppService.ServiceNameWithId)]
-        public async Task<ActionResult> GetAsync(string id)
+        [Consumes(MediaTypeNames.Application.Json)]
+        public async Task<GetBookResult> GetAsync(string id)
         {
             var result = await _appService.GetAsync(id);
-            return HttpResponseResult.Ok(data: result);
+            return result;
         }
 
 
         [HttpGet]
         [Route(IBookAppService.ServiceName)]
-        public async Task<ActionResult> GetListAsync([FromQuery(Name = nameof(PageDataQuery.Limit))] string? limitText,
-                                                     [FromQuery(Name = nameof(PageDataQuery.Offset))] string? offsetText)
+        [Consumes(MediaTypeNames.Application.Json)]
+        public async Task<List<GetBookResult>> GetListAsync([FromQuery(Name = nameof(PageDataQuery.Limit))] string? limitText,
+                                                            [FromQuery(Name = nameof(PageDataQuery.Offset))] string? offsetText)
         {
             if (int.TryParse(limitText, out int limit) &&
                 int.TryParse(offsetText, out int offset))
             {
                 var query = new PageDataQuery(offset, limit);
                 var results = await _appService.GetListAsync(query);
-                return HttpResponseResult.Ok(data: results);
+                return results;
 
             }
             else
             {
                 var results = await _appService.GetListAsync(null);
-                return HttpResponseResult.Ok(data: results);
+                return results;
             }
         }
 
         [HttpPost]
         [Route(IBookAppService.ServiceName)]
-        public async Task<ActionResult> AddAsync([FromBody] AddBookRequest book)
+        [Consumes(MediaTypeNames.Application.Json)]
+        public async Task<AddBookResult> AddAsync([FromBody] AddBookRequest book)
         {
-            if (book == null)
-            {
-                return HttpResponseResult.BadRequest();
-            }
-
             var result = await _appService.AddAsync(book);
-            return HttpResponseResult.Ok(data: result);
+            return result;
         }
 
         [HttpPut]
         [Route(IBookAppService.ServiceNameWithId)]
-        public async Task<ActionResult> UpdateAsync(string id, [FromBody] UpdateBookRequest book)
+        [Consumes(MediaTypeNames.Application.Json)]
+        public async Task UpdateAsync(string id, [FromBody] UpdateBookRequest book)
         {
-            if (book == null)
-            {
-                return HttpResponseResult.BadRequest();
-            }
-
             await _appService.UpdateAsync(id, book);
-
-            return HttpResponseResult.Ok();
         }
 
         [HttpDelete]
         [Route(IBookAppService.ServiceNameWithId)]
-        public async Task<ActionResult> DeleteAsync(string id)
+        [Consumes(MediaTypeNames.Application.Json)]
+        public async Task DeleteAsync(string id)
         {
             await _appService.DeleteAsync(id);
-
-            return HttpResponseResult.Ok();
         }
     }
 }
