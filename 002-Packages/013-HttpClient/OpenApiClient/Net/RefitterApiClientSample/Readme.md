@@ -2,7 +2,7 @@
 
 
 
-## Install CLI Tools
+## 安裝 CLI Tools
 
 
 
@@ -14,7 +14,7 @@ dotnet tool install --global Refitter
 
 ---
 
-## Install Pagckages
+## 安裝 Pagckages
 
 
 
@@ -37,6 +37,8 @@ refitter ./swagger.json --namespace "RefitterApiClient" --output ./DemoHttpClien
 ```
 
 
+
+---
 
 ## Reference
 

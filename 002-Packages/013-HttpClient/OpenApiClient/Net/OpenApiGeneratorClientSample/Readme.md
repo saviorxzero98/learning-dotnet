@@ -1,8 +1,8 @@
-# Open Api Genen
+# Open Api Generator
 
 
 
-## Install CLI Tools
+## 安裝 CLI Tools
 
 * [Install Docs](https://openapi-generator.tech/docs/installation)
 * npm
@@ -25,9 +25,10 @@ wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.2.0
 
 ---
 
-## Install Pagckages
+## 安裝 Pagckages
 
-
+* 預設使用 RestSharp
+    * 可以透過參數改用 HttpClient
 
 ```
 dotnet add package RestSharp
@@ -39,20 +40,22 @@ dotnet add package Polly
 
 
 
-
-
 ---
 
 ## Source Generator
 
 * **Example (JAR)**
     * [Additional Properties for C#](https://openapi-generator.tech/docs/generators/csharp)
+        * `targetFramework` ：設定 Target Framework
+        * `library` ：選擇使用的 Http Client 套件，HttpClient、RestSharp、UnityWebRequest 
 
 ```
 java -jar openapi-generator-cli-7.2.0.jar generate -i swagger.json -g csharp -o ./
 ```
 
 
+
+---
 
 ## Reference
 

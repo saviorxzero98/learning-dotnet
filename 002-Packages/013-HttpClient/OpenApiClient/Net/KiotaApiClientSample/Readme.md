@@ -1,6 +1,6 @@
 # Kiota
 
-## Install CLI Tools
+## 安裝 CLI Tools
 
 * [Install Doc](https://learn.microsoft.com/zh-tw/openapi/kiota/install)
 
@@ -12,7 +12,7 @@ dotnet tool install --global Microsoft.OpenApi.Kiota
 
 
 
-## Install Pagckages
+## 安裝 Pagckages
 
 
 
@@ -38,6 +38,8 @@ kiota generate -l CSharp -c DemoHttpClient -n KiotaApiClient -d ./swagger.json -
 ```
 
 
+
+---
 
 ## Reference
 
