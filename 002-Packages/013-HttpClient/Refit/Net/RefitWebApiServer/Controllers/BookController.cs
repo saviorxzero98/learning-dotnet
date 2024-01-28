@@ -6,7 +6,6 @@ using System.Net.Mime;
 
 namespace RefitWebApiServer.Controllers
 {
-    [Route(IBookAppService.BasePath)]
     [ApiController]
     public class BookController : ControllerBase
     {

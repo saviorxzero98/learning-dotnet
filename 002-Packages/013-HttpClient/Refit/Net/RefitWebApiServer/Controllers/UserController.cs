@@ -7,7 +7,6 @@ using System.Net.Mime;
 
 namespace RefitWebApiServer.Controllers
 {
-    [Route(IUserAppService.BasePath)]
     [ApiController]
     public class UserController : ControllerBase
     {
