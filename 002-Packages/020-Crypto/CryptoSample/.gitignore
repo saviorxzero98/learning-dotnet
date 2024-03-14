@@ -1,0 +1,14 @@
+**/Release
+**/Debug
+**/obj
+**/.vs
+**/packages
+**/bin
+*.suo
+*.user
+*.project
+*.pubxml
+**/*.log
+**/*.ps1
+**/*.jar
+kiota-lock.json
