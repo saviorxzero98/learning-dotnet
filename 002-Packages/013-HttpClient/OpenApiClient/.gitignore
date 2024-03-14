@@ -8,3 +8,7 @@
 *.user
 *.project
 *.pubxml
+**/*.log
+**/*.ps1
+**/*.jar
+kiota-lock.json
