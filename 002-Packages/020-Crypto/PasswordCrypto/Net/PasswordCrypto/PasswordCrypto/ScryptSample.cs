@@ -1,16 +1,15 @@
-﻿using CryptoHelper;
+﻿using Scrypt;
 
-namespace PasswordCyptoSample
+namespace PasswordCrypto
 {
-    public class PBKDF2Sample
+    public class ScryptSample
     {
         public static void Demo()
         {
-            Console.WriteLine("===== Demo PBKDF2 =====");
+            Console.WriteLine("===== Demo Scrypt =====");
 
             var textList = new List<string>()
             {
-                "",
                 "123456789",
                 "123456789",
                 "123456789"
@@ -35,12 +34,14 @@ namespace PasswordCyptoSample
 
         private static string Hash(string password)
         {
-            return Crypto.HashPassword(password);
+            var encoder = new ScryptEncoder();
+            return encoder.Encode(password);
         }
 
         private static bool Verify(string password, string hashText)
         {
-            return Crypto.VerifyHashedPassword(hashText, password);
+            ScryptEncoder encoder = new ScryptEncoder();
+            return encoder.Compare(password, hashText);
         }
     }
 }

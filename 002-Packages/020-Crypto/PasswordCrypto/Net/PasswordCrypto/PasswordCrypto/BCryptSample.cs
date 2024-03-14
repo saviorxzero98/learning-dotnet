@@ -1,4 +1,4 @@
-﻿namespace PasswordCyptoSample
+﻿namespace PasswordCrypto
 {
     public static class BCryptSample
     {
@@ -37,7 +37,7 @@
         }
 
         private static bool Verify(string password, string hashText)
-        { 
+        {
             return BCrypt.Net.BCrypt.Verify(password, hashText);
         }
     }

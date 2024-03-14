@@ -1,4 +1,4 @@
-﻿namespace PasswordCyptoSample
+﻿namespace PasswordCrypto
 {
     internal class Program
     {
