@@ -1,15 +1,15 @@
 ﻿using Refit;
-using RefitWebApiCore.AppServices;
+using RefitWebApiCore.RestServices;
 using RefitWebApiCore.Models;
 using RefitWebApiCore.Models.Users;
 
 namespace RefitWebApiServer.AppServices
 {
-    public class UserAppService : IUserAppService
+    public class UserRestService : IUserRestService
     {
         private readonly IServiceProvider _serviceProvider;
 
-        public UserAppService(IServiceProvider serviceProvider) 
+        public UserRestService(IServiceProvider serviceProvider) 
         {
             _serviceProvider = serviceProvider;
         }

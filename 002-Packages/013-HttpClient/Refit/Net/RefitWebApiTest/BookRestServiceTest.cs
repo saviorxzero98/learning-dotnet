@@ -1,14 +1,14 @@
-﻿using RefitWebApiCore.AppServices;
+﻿using RefitWebApiCore.RestServices;
 using RefitWebApiCore.Models;
 using RefitWebApiCore.Models.Books;
 
 namespace RefitWebApiTest
 {
-    public class BookAppServiceTest : IClassFixture<ContainerFixture<IBookAppService>>
+    public class BookRestServiceTest : IClassFixture<ContainerFixture<IBookRestService>>
     {
-        private readonly IBookAppService _appService;
+        private readonly IBookRestService _appService;
 
-        public BookAppServiceTest(ContainerFixture<IBookAppService> container)
+        public BookRestServiceTest(ContainerFixture<IBookRestService> container)
         {
             _appService = container.AppService;
         }

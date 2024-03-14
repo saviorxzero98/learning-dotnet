@@ -1,25 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RefitWebApiCore.AppServices;
 using RefitWebApiCore.Extensions;
 using RefitWebApiCore.Models;
 using RefitWebApiCore.Models.Users;
-using System.Net.Mime;
+using RefitWebApiCore.RestServices;
 
 namespace RefitWebApiServer.Controllers
 {
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserAppService _appService;
+        private readonly IUserRestService _appService;
 
-        public UserController(IUserAppService appService)
+        public UserController(IUserRestService appService)
         {
             _appService = appService;
         }
 
         [HttpGet]
-        [Route(IUserAppService.ServiceNameWithId)]
-        [Consumes(MediaTypeNames.Application.Json)]
+        [Route(IUserRestService.ServiceNameWithId)]
         public async Task<GetUserResult> GetAsync(string id)
         {
             var result = await _appService.GetAsync(id);
@@ -28,8 +26,7 @@ namespace RefitWebApiServer.Controllers
 
 
         [HttpGet]
-        [Route(IUserAppService.ServiceName)]
-        [Consumes(MediaTypeNames.Application.Json)]
+        [Route(IUserRestService.ServiceName)]
         public async Task<List<GetUserResult>> GetListAsync([FromQuery(Name = nameof(PageDataQuery.Limit))] string? limitText,
                                                             [FromQuery(Name = nameof(PageDataQuery.Offset))] string? offsetText)
         {
@@ -48,8 +45,7 @@ namespace RefitWebApiServer.Controllers
         }
 
         [HttpPost]
-        [Route(IUserAppService.ServiceName + "/token")]
-        [Consumes(MediaTypeNames.Application.Json)]
+        [Route(IUserRestService.ServiceName + "/token")]
         public async Task<UserTokenResult> GenerateTokenAsync([FromForm] UserLoginRequest loginInfo)
         {
             var result = await _appService.GenerateTokenAsync(loginInfo);
@@ -58,8 +54,7 @@ namespace RefitWebApiServer.Controllers
 
 
         [HttpPost]
-        [Route(IUserAppService.ServiceName)]
-        [Consumes(MediaTypeNames.Application.Json)]
+        [Route(IUserRestService.ServiceName)]
         public async Task<AddUserResult> AddAsync([FromBody] AddUserRequest user)
         {
             var result = await _appService.AddAsync(user);
@@ -67,24 +62,21 @@ namespace RefitWebApiServer.Controllers
         }
 
         [HttpPut]
-        [Route(IUserAppService.ServiceNameWithId)]
-        [Consumes(MediaTypeNames.Application.Json)]
+        [Route(IUserRestService.ServiceNameWithId)]
         public async Task UpdateAsync(string id, [FromBody] UpdateUserResuest book)
         {
             await _appService.UpdateAsync(id, book);
         }
 
         [HttpPatch]
-        [Route(IUserAppService.ServiceNameWithId + "/actived")]
-        [Consumes(MediaTypeNames.Application.Json)]
+        [Route(IUserRestService.ServiceNameWithId + "/actived")]
         public async Task UpdateActivedAsync(string id, [FromBody] UpdateActivedRequest activedInfo)
         {
             await _appService.UpdateActivedAsync(id, activedInfo);
         }
 
         [HttpPost]
-        [Route(IUserAppService.ServiceNameWithId + "/avatar")]
-        [Consumes(MediaTypeNames.Application.Octet)]
+        [Route(IUserRestService.ServiceNameWithId + "/avatar")]
         public async Task<UpdateAvatarResult> UploadAvatarAsync(string id, [FromForm] UpdateAvatarRequest avatarInfo)
         {
             var result = await _appService.UploadAvatarAsync(id, avatarInfo.Avatar.ToSteamPart());
@@ -93,8 +85,7 @@ namespace RefitWebApiServer.Controllers
         }
 
         [HttpDelete]
-        [Route(IUserAppService.ServiceNameWithId)]
-        [Consumes(MediaTypeNames.Application.Json)]
+        [Route(IUserRestService.ServiceNameWithId)]
         public async Task DeleteAsync(string id)
         {
             await _appService.DeleteAsync(id);

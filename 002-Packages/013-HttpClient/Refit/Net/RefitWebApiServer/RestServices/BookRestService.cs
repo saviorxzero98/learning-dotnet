@@ -1,11 +1,11 @@
 ﻿using Refit;
-using RefitWebApiCore.AppServices;
+using RefitWebApiCore.RestServices;
 using RefitWebApiCore.Models;
 using RefitWebApiCore.Models.Books;
 
 namespace RefitWebApiServer.AppServices
 {
-    public class BookAppService : IBookAppService
+    public class BookRestService : IBookRestService
     {
         /// <summary>
         /// 取得書籍

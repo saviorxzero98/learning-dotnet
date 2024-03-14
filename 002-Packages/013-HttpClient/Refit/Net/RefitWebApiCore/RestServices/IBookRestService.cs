@@ -2,9 +2,9 @@
 using RefitWebApiCore.Models;
 using RefitWebApiCore.Models.Books;
 
-namespace RefitWebApiCore.AppServices
+namespace RefitWebApiCore.RestServices
 {
-    public interface IBookAppService
+    public interface IBookRestService : IRefitRestService
     {
         public const string BasePath = "/api";
 

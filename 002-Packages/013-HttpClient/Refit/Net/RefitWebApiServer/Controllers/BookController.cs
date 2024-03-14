@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RefitWebApiCore.AppServices;
+using RefitWebApiCore.RestServices;
 using RefitWebApiCore.Models;
 using RefitWebApiCore.Models.Books;
 using System.Net.Mime;
@@ -10,9 +10,9 @@ namespace RefitWebApiServer.Controllers
     public class BookController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly IBookAppService _appService;
+        private readonly IBookRestService _appService;
 
-        public BookController(IBookAppService appService,
+        public BookController(IBookRestService appService,
                               IConfiguration configuration)
         {
             _appService = appService;
@@ -20,7 +20,7 @@ namespace RefitWebApiServer.Controllers
         }
 
         [HttpGet]
-        [Route(IBookAppService.ServiceNameWithId)]
+        [Route(IBookRestService.ServiceNameWithId)]
         [Consumes(MediaTypeNames.Application.Json)]
         public async Task<GetBookResult> GetAsync(string id)
         {
@@ -30,7 +30,7 @@ namespace RefitWebApiServer.Controllers
 
 
         [HttpGet]
-        [Route(IBookAppService.ServiceName)]
+        [Route(IBookRestService.ServiceName)]
         [Consumes(MediaTypeNames.Application.Json)]
         public async Task<List<GetBookResult>> GetListAsync([FromQuery(Name = nameof(PageDataQuery.Limit))] string? limitText,
                                                             [FromQuery(Name = nameof(PageDataQuery.Offset))] string? offsetText)
@@ -51,7 +51,7 @@ namespace RefitWebApiServer.Controllers
         }
 
         [HttpPost]
-        [Route(IBookAppService.ServiceName)]
+        [Route(IBookRestService.ServiceName)]
         [Consumes(MediaTypeNames.Application.Json)]
         public async Task<AddBookResult> AddAsync([FromBody] AddBookRequest book)
         {
@@ -60,7 +60,7 @@ namespace RefitWebApiServer.Controllers
         }
 
         [HttpPut]
-        [Route(IBookAppService.ServiceNameWithId)]
+        [Route(IBookRestService.ServiceNameWithId)]
         [Consumes(MediaTypeNames.Application.Json)]
         public async Task UpdateAsync(string id, [FromBody] UpdateBookRequest book)
         {
@@ -68,7 +68,7 @@ namespace RefitWebApiServer.Controllers
         }
 
         [HttpDelete]
-        [Route(IBookAppService.ServiceNameWithId)]
+        [Route(IBookRestService.ServiceNameWithId)]
         [Consumes(MediaTypeNames.Application.Json)]
         public async Task DeleteAsync(string id)
         {

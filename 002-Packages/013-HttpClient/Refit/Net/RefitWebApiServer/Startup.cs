@@ -1,4 +1,4 @@
-﻿using RefitWebApiCore.AppServices;
+﻿using RefitWebApiCore.RestServices;
 using RefitWebApiServer.AppServices;
 
 namespace RefitWebApiServer
@@ -26,8 +26,8 @@ namespace RefitWebApiServer
             });
 
             // Add Application Service
-            services.AddTransient<IBookAppService, BookAppService>();
-            services.AddTransient<IUserAppService, UserAppService>();
+            services.AddTransient<IBookRestService, BookRestService>();
+            services.AddTransient<IUserRestService, UserRestService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

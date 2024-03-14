@@ -1,14 +1,14 @@
-﻿using RefitWebApiCore.AppServices;
+﻿using RefitWebApiCore.RestServices;
 using RefitWebApiCore.Models;
 using RefitWebApiCore.Models.Users;
 
 namespace RefitWebApiTest
 {
-    public class UserAppServiceTest : IClassFixture<ContainerFixture<IUserAppService>>
+    public class UserRestServiceTest : IClassFixture<ContainerFixture<IUserRestService>>
     {
-        private readonly IUserAppService _appService;
+        private readonly IUserRestService _appService;
 
-        public UserAppServiceTest(ContainerFixture<IUserAppService> container)
+        public UserRestServiceTest(ContainerFixture<IUserRestService> container)
         {
             _appService = container.AppService;
         }

@@ -2,9 +2,9 @@
 using RefitWebApiCore.Models;
 using RefitWebApiCore.Models.Users;
 
-namespace RefitWebApiCore.AppServices
+namespace RefitWebApiCore.RestServices
 {
-    public interface IUserAppService
+    public interface IUserRestService : IRefitRestService
     {
         public const string BasePath = "/api";
 
