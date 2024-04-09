@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>BotGame.BullsAndCowsGame</AssemblyName>
+    <RootNamespace>BotGame.BullsAndCowsGame</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Bot.Builder" Version="4.11.3" />
+    <PackageReference Include="Microsoft.Bot.Builder.Dialogs" Version="4.11.3" />
+    <PackageReference Include="Microsoft.Bot.Schema" Version="4.11.3" />
+  </ItemGroup>
+
+</Project>
