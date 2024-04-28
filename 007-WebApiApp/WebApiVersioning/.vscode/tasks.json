@@ -1,0 +1,59 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/WebApiVersioning/WebApiVersioning.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish (FDD)",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+				"-c",
+				"Release",
+                "${workspaceFolder}/src/WebApiVersioning/WebApiVersioning.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish (SCD [win-x64])",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+				"-c",
+				"Release",
+				"-r",
+				"win-x64",
+				"--self-contained",
+				"true",
+                "${workspaceFolder}/src/WebApiVersioning/WebApiVersioning.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish (SCD [linux-x64])",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+				"-c",
+				"Release",
+				"-r",
+				"linux-x64",
+				"--self-contained",
+				"true",
+                "${workspaceFolder}/src/WebApiVersioning/WebApiVersioning.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+    ]
+}
