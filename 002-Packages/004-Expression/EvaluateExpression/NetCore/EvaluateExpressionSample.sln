@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30717.126
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvaluateExpressionSample", "EvaluateExpressionSample\EvaluateExpressionSample.csproj", "{00E38E93-A9B5-4626-ABBD-E5EB1D589599}"
 EndProject

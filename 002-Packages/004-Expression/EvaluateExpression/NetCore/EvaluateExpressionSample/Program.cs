@@ -28,11 +28,13 @@ namespace EvaluateExpressionSample
 
             DemoMsieJsEngine(GetJsExpressions(isSupportES6: true));
 
-            DemoJintJsEngine(GetJsExpressions(isSupportES6: true));
+            DemoJintJsEngine(GetJsExpressions(isSupportES6: true, isSupportES2018: true));
 
             DemoJurassicJsEngine(GetJsExpressions(isSupportES6: true));
 
-            DemoNiLJsEngine(GetJsExpressions(isSupportES6: true));
+            DemoNiLJsEngine(GetJsExpressions(isSupportES6: true, isSupportES2018: true));
+
+            DemoYantra(GetJsExpressions(isSupportES6: true, isSupportES2018: true, isSupportES2020: true));
 
             DemoVroomJsEngine(GetJsExpressions(isSupportES6: true));
 
@@ -41,7 +43,9 @@ namespace EvaluateExpressionSample
             DemoIronPythonEvaluator();
         }
 
-        static List<string> GetJsExpressions(bool isSupportES6)
+        static List<string> GetJsExpressions(bool isSupportES6 = false,
+                                             bool isSupportES2018 = false,
+                                             bool isSupportES2020 = false)
         {
             var expressions = new List<string>()
             {
@@ -50,6 +54,17 @@ namespace EvaluateExpressionSample
                 (isSupportES6) ? "`${\"Hello\"} ${\"World\"}`": "\"Hello\" + \" \" + \"World\"",
                 "JSON.stringify({\"id\": 1, \"name\": \"ace\" });"
             };
+
+            if (isSupportES2018) 
+            {
+                expressions.Add("JSON.stringify({ id: 1, ...{ id: 11, name: 'jack' }})");
+            }
+
+            if (isSupportES2020)
+            {
+                expressions.Add("user?.id ?? 'Guest'");
+            }
+
             return expressions;
         }
 
@@ -313,6 +328,19 @@ namespace EvaluateExpressionSample
             foreach (var expression in expressions)
             {
                 Console.WriteLine(ClearScriptEvaluator.Eval(expression));
+            }
+
+            EndDemo(start);
+        }
+
+        // Demo Yantra
+        static void DemoYantra(List<string> expressions)
+        {
+            var start = StartDemo("Yantra Evaluate");
+
+            foreach (var expression in expressions)
+            {
+                Console.WriteLine(YantraJSEvaluator.Eval(expression));
             }
 
             EndDemo(start);
