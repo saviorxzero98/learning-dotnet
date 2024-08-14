@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
 using StringCompressSample.TextCompressors;
 using System.Text;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace StringCompressSample
 {
@@ -13,13 +12,23 @@ namespace StringCompressSample
             var data = ReadJson();
 
 
-            DemoText(text, new DeflateCompressor(), "Deflate");
-            DemoText(text, new GZipCompressor(), "GZip");
-            DemoText(text, new BrotliCompressor(), "Brotli");
+            DemoText(text, TextCompressor.Deflate, "Deflate");
+            DemoText(text, TextCompressor.GZip, "GZip");
+            DemoText(text, TextCompressor.ZLib, "ZLib");
+            DemoText(text, TextCompressor.Brotli, "Brotli");
+            DemoText(text, new ZstdNetCompressor(), "Zstandard (Net)");
+            DemoText(text, new ZstdSharpCompressor(), "Zstandard (Sharp)");
+            DemoText(text, new LZ4Compressor(), "LZ4");
+            DemoText(text, new SnappierCompressor(), "Snappier");
 
-            DemoObject(data, new DeflateCompressor(), "Deflate");
-            DemoObject(data, new GZipCompressor(), "GZip");
-            DemoObject(data, new BrotliCompressor(), "Brotli");
+            DemoObject(data, TextCompressor.Deflate, "Deflate");
+            DemoObject(data, TextCompressor.GZip, "GZip");
+            DemoObject(data, TextCompressor.ZLib, "ZLib");
+            DemoObject(data, TextCompressor.Brotli, "Brotli");
+            DemoObject(data, new ZstdNetCompressor(), "Zstandard (Net)");
+            DemoObject(data, new ZstdSharpCompressor(), "Zstandard (Sharp)");
+            DemoObject(data, new LZ4Compressor(), "LZ4");
+            DemoObject(data, new SnappierCompressor(), "Snappier");
         }
 
         static void DemoText(string text, ICompressor compressor, string type)
@@ -31,12 +40,14 @@ namespace StringCompressSample
             var compressEndTime = DateTime.Now;
 
             double compressSize = compressBytes.Length;
+            double compressPercentage = (compressSize / fileSize) * 100;
 
             Console.WriteLine($"===== 文字壓縮 ({type}) =====");
+            Console.WriteLine("[壓縮]");
             Console.WriteLine($"內容: {Convert.ToBase64String(compressBytes)}");
             Console.WriteLine($"大小: {compressSize} bytes");
             Console.WriteLine($"時間: {(compressEndTime - compressStartTime).TotalMilliseconds} ms");
-            Console.WriteLine($"壓縮率: {(compressSize / fileSize) * 100}%");
+            Console.WriteLine($"壓縮率: {string.Format("{0:0.00}", compressPercentage)}%");
 
             Console.WriteLine("");
 
@@ -44,7 +55,7 @@ namespace StringCompressSample
             var decompressText = compressor.DecompressText(compressBytes);
             var decompressEndTime = DateTime.Now;
 
-            Console.WriteLine($"===== 文字解壓縮 ({type}) =====");
+            Console.WriteLine("[解壓縮]");
             Console.WriteLine($"內容: {decompressText}");
             Console.WriteLine($"大小: {fileSize} bytes");
             Console.WriteLine($"時間: {(decompressEndTime - decompressStartTime).TotalMilliseconds} ms");
@@ -61,13 +72,14 @@ namespace StringCompressSample
             var compressEndTime = DateTime.Now;
 
             double compressSize = compressBytes.Length;
+            double compressPercentage = (compressSize / fileSize) * 100;
 
-            Console.WriteLine(type);
+            Console.WriteLine($"===== JSON 字串解壓縮 ({type}) =====");
             Console.WriteLine("[壓縮]");
-            Console.WriteLine($"內容: {Convert.ToBase64String(compressBytes)}");
+            //Console.WriteLine($"內容: {Convert.ToBase64String(compressBytes)}");
             Console.WriteLine($"大小: {compressSize} bytes");
             Console.WriteLine($"時間: {(compressEndTime - compressStartTime).TotalMilliseconds} ms");
-            Console.WriteLine($"壓縮率: {(compressSize / fileSize) * 100}%");
+            Console.WriteLine($"壓縮率: {string.Format("{0:0.00}", compressPercentage)}%");
 
             Console.WriteLine("");
 

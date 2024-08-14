@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
-using System.IO.Compression;
+using ZstdSharp;
 
 namespace StringCompressSample.TextCompressors
 {
-    public class BrotliCompressor : ICompressor
+    public class ZstdSharpCompressor : ICompressor
     {
-        /// <summary>
+         /// <summary>
         /// 壓縮文字
         /// </summary>
         /// <param name="text"></param>
@@ -13,12 +13,12 @@ namespace StringCompressSample.TextCompressors
         public byte[] CompressText(string text)
         {
             using (var memoryStream = new MemoryStream())
-            using (var brotliStream = new BrotliStream(memoryStream, CompressionMode.Compress))
-            using (var streamWriter = new StreamWriter(brotliStream))
+            using (var zstdStream = new CompressionStream(memoryStream))
+            using (var streamWriter = new StreamWriter(zstdStream))
             {
                 streamWriter.Write(text);
                 streamWriter.Close();
-                brotliStream.Close();
+                zstdStream.Close();
 
                 var bytes = memoryStream.ToArray();
                 return bytes;
@@ -37,8 +37,8 @@ namespace StringCompressSample.TextCompressors
             }
 
             using (var memoryStream = new MemoryStream(bytes))
-            using (var brotliStream = new BrotliStream(memoryStream, CompressionMode.Decompress))
-            using (var streamReader = new StreamReader(brotliStream))
+            using (var zstdStream = new DecompressionStream(memoryStream))
+            using (var streamReader = new StreamReader(zstdStream))
             {
                 return streamReader.ReadToEnd();
             }

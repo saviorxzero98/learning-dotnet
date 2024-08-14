@@ -1,9 +1,10 @@
 ﻿using Newtonsoft.Json;
+using Snappier;
 using System.IO.Compression;
 
 namespace StringCompressSample.TextCompressors
 {
-    public class DeflateCompressor : ICompressor
+    public class SnappierCompressor : ICompressor
     {
         /// <summary>
         /// 壓縮文字
@@ -13,12 +14,12 @@ namespace StringCompressSample.TextCompressors
         public byte[] CompressText(string text)
         {
             using (var memoryStream = new MemoryStream())
-            using (var deflateStream = new DeflateStream(memoryStream, CompressionMode.Compress))
-            using (var streamWriter = new StreamWriter(deflateStream))
+            using (var snappyStream = new SnappyStream(memoryStream, CompressionMode.Compress))
+            using (var streamWriter = new StreamWriter(snappyStream))
             {
                 streamWriter.Write(text);
                 streamWriter.Close();
-                deflateStream.Close();
+                snappyStream.Close();
 
                 var bytes = memoryStream.ToArray();
                 return bytes;
@@ -37,8 +38,8 @@ namespace StringCompressSample.TextCompressors
             }
 
             using (var memoryStream = new MemoryStream(bytes))
-            using (var deflateStream = new DeflateStream(memoryStream, CompressionMode.Decompress))
-            using (var streamReader = new StreamReader(deflateStream))
+            using (var snappyStream = new SnappyStream(memoryStream, CompressionMode.Decompress))
+            using (var streamReader = new StreamReader(snappyStream))
             {
                 return streamReader.ReadToEnd();
             }
