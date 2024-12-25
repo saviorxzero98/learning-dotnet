@@ -81,6 +81,19 @@ namespace SpectreConsoleSample
             AnsiConsole.MarkupLine($"你選擇了 [bold yellow]{playerClass}[/]");
             var password = AnsiConsole.Prompt(new TextPrompt<string>("請輸入你的密碼").Secret());
 
+            var equipments = AnsiConsole.Prompt(
+                new MultiSelectionPrompt<string>()
+                    .Title("請選擇初始裝備")
+                    .NotRequired() // Not required to have a favorite fruit
+                    .PageSize(10)
+                    .InstructionsText(
+                        "[grey](請按 [blue]<space>[/] 選擇裝備，按下 [green]<enter>[/] 完成選擇)[/]")
+                    .AddChoiceGroup("武器", new string[] { "長劍", "長槍", "巨斧", "法杖", "魔導書", "長弓", "短劍", "巨錘" })
+                    .AddChoiceGroup("防具", new string[] { "鐵鎧", "圓盾", "長袍", "皮甲", "修道服" })
+                    .AddChoices(new string[] { "戒指", "耳環", "項鍊" })
+                    .Select("長劍"));
+            AnsiConsole.MarkupLine($"你選擇了裝備 [bold yellow]{string.Join("、", equipments)}[/]");
+
             Console.WriteLine();
 
             var grid = new Grid();
