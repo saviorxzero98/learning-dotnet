@@ -44,7 +44,8 @@ namespace GarnetSampleServer
             var options = new GarnetServerOptions()
             {
                 Address = setting.Address,
-                Port = setting.Port
+                Port = setting.Port,
+                EnableLua = true
             };
 
             if (!string.IsNullOrEmpty(setting.Password))

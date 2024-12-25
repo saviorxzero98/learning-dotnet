@@ -18,7 +18,7 @@ namespace RedisSampleClient
                 await db.StringSetAsync(Key, "TestValue");
 
                 // Get
-                string value = await db.StringGetAsync(Key);
+                string? value = await db.StringGetAsync(Key);
                 Console.WriteLine(value);
             }
         }
