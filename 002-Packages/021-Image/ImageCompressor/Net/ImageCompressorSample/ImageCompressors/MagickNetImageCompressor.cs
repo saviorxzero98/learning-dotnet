@@ -6,13 +6,16 @@ namespace ImageCompressorSample.ImageCompressors
     {
         public uint Quality { get; set; }
 
+        public ImageFormatType Format { get; set; }
+
         public MagickNetImageCompressor()
         {
             Quality = 75;
         }
-        public MagickNetImageCompressor(uint quality)
+        public MagickNetImageCompressor(uint quality, ImageFormatType format = ImageFormatType.Jpeg)
         {
             Quality = quality;
+            Format = format;
         }
 
         /// <summary>
@@ -31,11 +34,31 @@ namespace ImageCompressorSample.ImageCompressors
                     throw new InvalidOperationException("Failed to decode image.");
                 }
 
-                image.Format = MagickFormat.Jpg;
+                image.Format = GetFormat();
                 image.Quality = Quality;
 
                 image.Write(outputStream);
                 return outputStream.ToArray();
+            }
+        }
+
+        private MagickFormat GetFormat()
+        {
+            switch (Format)
+            {
+                case ImageFormatType.WebP:
+                    return MagickFormat.WebP;
+                case ImageFormatType.Png:
+                    return MagickFormat.Png;
+                case ImageFormatType.Bmp:
+                    return MagickFormat.Bmp;
+                case ImageFormatType.Gif:
+                    return MagickFormat.Gif;
+                case ImageFormatType.Ico:
+                    return MagickFormat.Ico;
+                case ImageFormatType.Jpeg:
+                default:
+                    return MagickFormat.Jpeg;
             }
         }
     }

@@ -6,13 +6,16 @@ namespace ImageCompressorSample.ImageCompressors
     {
         public int Quality { get; set; }
 
+        public ImageFormatType Format { get; set; }
+
         public SkiaSharpImageCompressor()
         {
             Quality = 75;
         }
-        public SkiaSharpImageCompressor(int quality)
+        public SkiaSharpImageCompressor(int quality, ImageFormatType format = ImageFormatType.Jpeg)
         {
             Quality = quality;
+            Format = format;
         }
 
         /// <summary>
@@ -32,10 +35,30 @@ namespace ImageCompressorSample.ImageCompressors
                 }
 
                 var image = SKImage.FromBitmap(bitmap);
-                var data = image.Encode(SKEncodedImageFormat.Jpeg, Quality);
+                var data = image.Encode(GetFormat(), Quality);
                 data.SaveTo(outputStream);
 
                 return outputStream.ToArray();
+            }
+        }
+
+        private SKEncodedImageFormat GetFormat()
+        {
+            switch (Format) 
+            {
+                case ImageFormatType.WebP:
+                    return SKEncodedImageFormat.Webp;
+                case ImageFormatType.Png:
+                    return SKEncodedImageFormat.Png;
+                case ImageFormatType.Bmp:
+                    return SKEncodedImageFormat.Bmp;
+                case ImageFormatType.Gif:
+                    return SKEncodedImageFormat.Gif;
+                case ImageFormatType.Ico:
+                    return SKEncodedImageFormat.Ico;
+                case ImageFormatType.Jpeg:
+                default:
+                    return SKEncodedImageFormat.Jpeg;
             }
         }
     }

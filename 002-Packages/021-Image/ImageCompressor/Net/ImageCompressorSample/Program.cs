@@ -8,15 +8,21 @@ namespace ImageCompressorSample
         {
             var fileName = "Images\\Sample.png";
 
-            CompressImage(fileName, "SystemDrawing", new SystemDrawingImageCompressor());
-            CompressImage(fileName, "SkiaSharp", new SkiaSharpImageCompressor());
-            CompressImage(fileName, "ImageSharp", new ImageSharpImageCompressor());
-            CompressImage(fileName, "MagickNet", new MagickNetImageCompressor());
-            CompressImage(fileName, "NetVips", new NetVipsImageCompressor());
+            var jpgExt = "jpg";
+            var webpExt = "webp";
+
+            CompressImage(fileName, "SystemDrawing", jpgExt, new SystemDrawingImageCompressor(80));
+            CompressImage(fileName, "SkiaSharp (Jpg)", jpgExt, new SkiaSharpImageCompressor(80, ImageFormatType.Jpeg));
+            CompressImage(fileName, "SkiaSharp (WebP)", webpExt, new SkiaSharpImageCompressor(80, ImageFormatType.WebP));
+            CompressImage(fileName, "ImageSharp (Jpg)", jpgExt, new ImageSharpImageCompressor(80, ImageFormatType.Jpeg));
+            CompressImage(fileName, "ImageSharp (WebP)", webpExt, new ImageSharpImageCompressor(80, ImageFormatType.WebP));
+            CompressImage(fileName, "MagickNet (Jpg)", jpgExt, new MagickNetImageCompressor(80, ImageFormatType.Jpeg));
+            CompressImage(fileName, "MagickNet (WebP)", webpExt, new MagickNetImageCompressor(80, ImageFormatType.WebP));
+            CompressImage(fileName, "NetVips", jpgExt, new NetVipsImageCompressor());
         }
 
 
-        static void CompressImage(string fileName, string name, IImageCompressor imageCompressor)
+        static void CompressImage(string fileName, string name, string fileExt, IImageCompressor imageCompressor)
         {
             Console.WriteLine($"===== Demo {name} =====");
 
@@ -26,7 +32,7 @@ namespace ImageCompressorSample
             Console.WriteLine("Compress Image");
             var outputBytes = imageCompressor.CompressImage(inputBytes);
 
-            var outputFileName = $"Images\\{name}.jpg";
+            var outputFileName = $"Images\\{name}.{fileExt}";
             Console.WriteLine($"Save Image: {outputFileName}");
             imageCompressor.SaveImage(outputFileName, outputBytes);
 
