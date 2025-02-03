@@ -1,16 +1,11 @@
-﻿using ExcelLibSampleCommon;
+﻿using ClosedXML.Excel;
+using ExcelLibSampleCommon;
 using Newtonsoft.Json.Linq;
-using NPOI.HSSF.UserModel;
-using NPOI.SS.UserModel;
-using NPOI.XSSF.UserModel;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.IO;
 
-namespace NpoiSample
+namespace ClosedXMLSample
 {
-    public class NpoiExcelWriter : IExcelWriter
+    public class ClosedXmlExcelWriter : IExcelWriter
     {
         /// <summary>
         /// 寫入
@@ -20,13 +15,13 @@ namespace NpoiSample
         /// <param name="format"></param>
         public void Write(Stream stream, DataSet data, ExcelFormat format = ExcelFormat.Xlsx)
         {
-            IWorkbook workbook = GetWorkBook(format);
+            IXLWorkbook workbook = new XLWorkbook();
             for (int t = 0; t < data.Tables.Count; t++)
             {
                 DataTable table = data.Tables[t];
                 Write(workbook, table);
             }
-            workbook.Write(stream);
+            workbook.SaveAs(stream);
         }
 
         /// <summary>
@@ -37,9 +32,9 @@ namespace NpoiSample
         /// <param name="format"></param>
         public void Write(Stream stream, DataTable data, ExcelFormat format = ExcelFormat.Xlsx)
         {
-            IWorkbook workbook = GetWorkBook(format);
+            IXLWorkbook workbook = new XLWorkbook();
             Write(workbook, data);
-            workbook.Write(stream);
+            workbook.SaveAs(stream);
         }
 
         /// <summary>
@@ -62,81 +57,52 @@ namespace NpoiSample
         /// </summary>
         /// <param name="workbook"></param>
         /// <param name="table"></param>
-        protected void Write(IWorkbook workbook, DataTable table)
+        protected void Write(IXLWorkbook workbook, DataTable table)
         {
-            ISheet sheet = workbook.CreateSheet(table.TableName);
+            IXLWorksheet sheet = workbook.AddWorksheet(table.TableName);
 
-            IRow headerRow = sheet.CreateRow(0);
+            IXLRow headerRow = sheet.FirstRow();
             for (int c = 0; c < table.Columns.Count; c++)
             {
-                ICell cell = headerRow.CreateCell(c);
+                IXLCell cell = headerRow.Cell(c + 1);
                 string columnName = table.Columns[c].ToString();
-                cell.SetCellValue(columnName);
+                cell.Value = columnName;
             }
 
             for (int r = 0; r < table.Rows.Count; r++)
             {
-                IRow row = sheet.CreateRow(r + 1);
+                IXLRow row = sheet.Row(r + 1 + 1);
                 DataRow dataRow = table.Rows[r];
                 for (int c = 0; c < table.Columns.Count; c++)
                 {
-                    ICell cell = row.CreateCell(c);
+                    IXLCell cell = row.Cell(c + 1);
                     var cellValue = JToken.FromObject(dataRow[c]);
 
                     switch (cellValue.Type)
                     {
                         case JTokenType.Integer:
-                            cell.SetCellValue(cellValue.ToObject<long>());
+                            cell.Value = cellValue.ToObject<long>();
                             break;
 
                         case JTokenType.Float:
-                            cell.SetCellValue(cellValue.ToObject<double>());
+                            cell.Value = cellValue.ToObject<double>();
                             break;
 
                         case JTokenType.Boolean:
-                            cell.SetCellValue(cellValue.ToObject<bool>());
+                            cell.Value = cellValue.ToObject<bool>();
                             break;
 
                         case JTokenType.Date:
-                            cell.SetCellValue(cellValue.ToObject<DateTime>().ToString("yyyy-MM-dd HH:mm:ss"));
+                            cell.Value = cellValue.ToObject<DateTime>().ToString("yyyy-MM-dd HH:mm:ss");
                             break;
 
                         case JTokenType.String:
                         default:
-                            cell.SetCellValue(cellValue.ToString());
+                            cell.Value = cellValue.ToString();
                             break;
                     }
                 }
             }
         }
-
-
-
-        #region Private
-
-        /// <summary>
-        /// 取得 Workbook
-        /// </summary>
-        /// <param name="format"></param>
-        /// <returns></returns>
-        protected IWorkbook GetWorkBook(ExcelFormat format)
-        {
-            IWorkbook workbook;
-            switch (format)
-            {
-                case ExcelFormat.Xls:
-                    workbook = new HSSFWorkbook();
-                    break;
-
-                case ExcelFormat.Xlsx:
-                default:
-                    workbook = new XSSFWorkbook();
-                    break;
-            }
-
-            return workbook;
-        }
-
-        #endregion
     }
 }
