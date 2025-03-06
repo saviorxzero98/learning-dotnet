@@ -1,0 +1,29 @@
+@DistributedCachingSample_HostAddress = http://localhost:5091
+
+### GET Book
+@getBookId = 1
+GET {{DistributedCachingSample_HostAddress}}/book?id={{getBookId}}
+Accept: application/json
+
+### Post Book
+@addBookId = 1
+POST {{DistributedCachingSample_HostAddress}}/book
+Accept: application/json
+Content-Type: application/json
+
+{
+    "Id": "{{addBookId}}",
+    "Name": "Hello World"
+}
+
+### Search Books
+POST {{DistributedCachingSample_HostAddress}}/book/search
+Accept: application/json
+Content-Type: application/json
+
+{
+    "BookIds": [
+        "1",
+        "2"
+    ]
+}
