@@ -1,4 +1,5 @@
-using Microsoft.Extensions.Caching.StackExchangeRedis;
+using DistributedCachingSample.Caching;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace DistributedCachingSample
 {
@@ -35,17 +36,23 @@ namespace DistributedCachingSample
 
         public static void ConfigureCaching(IServiceCollection services)
         {
+            services.TryAdd(ServiceDescriptor.Singleton<ICacheManager, HybridCacheManager>());
+            //services.TryAdd(ServiceDescriptor.Singleton<ICacheManager, DistributedCacheManager>());
+
             // Memory Cache
-            services.AddDistributedMemoryCache();
+            //services.AddDistributedMemoryCache();
 
             // Redis Cache
-            //services.AddOptions<RedisCacheOptions>().Configure(options =>
+            //services.AddStackExchangeRedisCache(options =>
             //{
             //    options.Configuration = "localhost:6379";
             //});
-            //services.AddStackExchangeRedisCache(options =>
-            //{
-            //});
+
+            // Hybrid Cache
+            services.AddHybridCache(options =>
+            {
+                options.DisableCompression = true;
+            });
         }
     }
 }

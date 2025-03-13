@@ -5,17 +5,41 @@
 GET {{DistributedCachingSample_HostAddress}}/book?id={{getBookId}}
 Accept: application/json
 
+###-----------------------------------------------------------------
 ### Post Book
-@addBookId = 1
+@addBookId1 = 1
 POST {{DistributedCachingSample_HostAddress}}/book
 Accept: application/json
 Content-Type: application/json
 
 {
-    "Id": "{{addBookId}}",
-    "Name": "Hello World"
+    "Id": "{{addBookId1}}",
+    "Name": "Hello World",
+    "Author": "Human",
+    "Publisher": "Earch",
+    "Categories": [
+        "Test"
+    ]
 }
 
+###-----------------------------------------------------------------
+### Post Book
+@addBookId2 = 2
+POST {{DistributedCachingSample_HostAddress}}/book
+Accept: application/json
+Content-Type: application/json
+
+{
+    "Id": "{{addBookId2}}",
+    "Name": "Hello World2",
+    "Author": "Human",
+    "Publisher": "Earch",
+    "Categories": [
+        "Test2"
+    ]
+}
+
+###-----------------------------------------------------------------
 ### Search Books
 POST {{DistributedCachingSample_HostAddress}}/book/search
 Accept: application/json
@@ -27,3 +51,23 @@ Content-Type: application/json
         "2"
     ]
 }
+
+###-----------------------------------------------------------------
+### Remove Book by Tag
+DELETE {{DistributedCachingSample_HostAddress}}/book/byTags
+Accept: application/json
+Content-Type: application/json
+
+{
+    "Tags": [
+        "Book:Category:Test2"
+    ]
+}
+
+###-----------------------------------------------------------------
+### Remove Book
+@deleteBookId = 1
+DELETE {{DistributedCachingSample_HostAddress}}/book/{{deleteBookId}}
+
+
+
