@@ -1,5 +1,7 @@
-using DistributedCachingSample.Caching;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Caching.StackExchangeRedis;
+using ZiggyCreatures.Caching.Fusion;
+using ZiggyCreatures.Caching.Fusion.Backplane.StackExchangeRedis;
+using ZiggyCreatures.Caching.Fusion.Serialization.NewtonsoftJson;
 
 namespace DistributedCachingSample
 {
@@ -36,23 +38,20 @@ namespace DistributedCachingSample
 
         public static void ConfigureCaching(IServiceCollection services)
         {
-            services.TryAdd(ServiceDescriptor.Singleton<ICacheManager, HybridCacheManager>());
-            //services.TryAdd(ServiceDescriptor.Singleton<ICacheManager, DistributedCacheManager>());
-
             // Memory Cache
+            services.AddMemoryCache();
+
+            // Distributed Memory Cache
             //services.AddDistributedMemoryCache();
 
-            // Redis Cache
-            //services.AddStackExchangeRedisCache(options =>
-            //{
-            //    options.Configuration = "localhost:6379";
-            //});
-
-            // Hybrid Cache
-            services.AddHybridCache(options =>
-            {
-                options.DisableCompression = true;
-            });
+            // Add Fusion Cache
+            var redisConnection = "localhost:6379";
+            services.AddFusionCache()
+                    .WithSerializer(new FusionCacheNewtonsoftJsonSerializer())
+                    .WithDistributedCache(
+                        new RedisCache(new RedisCacheOptions { Configuration = redisConnection }))
+                    .WithBackplane(
+                        new RedisBackplane(new RedisBackplaneOptions { Configuration = redisConnection }));
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿using DistributedCachingSample.Caching;
-using DistributedCachingSample.Models;
+﻿using DistributedCachingSample.Models;
 using Microsoft.AspNetCore.Mvc;
+using ZiggyCreatures.Caching.Fusion;
 
 namespace DistributedCachingSample.Controllers
 {
@@ -9,21 +9,20 @@ namespace DistributedCachingSample.Controllers
     public class BookController : ControllerBase
     {
         private readonly ILogger<BookController> _logger;
-        private readonly ICacheManager _cacheManager;
+        private readonly IFusionCache _cache;
 
         public BookController(
             ILogger<BookController> logger,
-            ICacheManager cacheManager)
+            IFusionCache cache)
         {
             _logger = logger;
-            _cacheManager = cacheManager;
+            _cache = cache;
         }
 
         [HttpGet]
         public async Task<BookResponse> GetAsync(string id)
         {
-            var book = await _cacheManager.GetOrCreateAsync(GetCacheKey(id),
-                                                            (token) => ValueTask.FromResult(default(Book)));
+            var book = await _cache.GetOrDefaultAsync<Book>(GetCacheKey(id));
             return new BookResponse(book);
         }
 
@@ -41,8 +40,7 @@ namespace DistributedCachingSample.Controllers
             var books = new List<Book>();
             foreach (var bookId in bookIds)
             {
-                var book = await _cacheManager.GetOrCreateAsync(bookId,
-                                                                (token) => ValueTask.FromResult(default(Book)));
+                var book = await _cache.GetOrDefaultAsync<Book>(bookId);
                 if (book != null)
                 {
                     books.Add(book);
@@ -52,7 +50,7 @@ namespace DistributedCachingSample.Controllers
         }
 
         [HttpPost]
-        public ValueTask<Book> AddAsync([FromBody] Book book)
+        public async ValueTask<Book> AddAsync([FromBody] Book book)
         {
             if (book == null || string.IsNullOrEmpty(book.Id))
             {
@@ -60,8 +58,8 @@ namespace DistributedCachingSample.Controllers
             }
 
             var tags = GetTags(book);
-            _cacheManager.SetAsync(GetCacheKey(book.Id), book, tags: tags);
-            return ValueTask.FromResult(book);
+            await _cache.SetAsync(GetCacheKey(book.Id), book, tags: tags);
+            return book;
         }
 
         [HttpDelete]
@@ -73,7 +71,7 @@ namespace DistributedCachingSample.Controllers
                 throw new ArgumentNullException(nameof(refresh));
             }
 
-            await _cacheManager.RemoveByTagAsync(refresh.Tags);
+            await _cache.RemoveByTagAsync(refresh.Tags);
         }
 
 
@@ -81,7 +79,7 @@ namespace DistributedCachingSample.Controllers
         [Route("{id}")]
         public async Task DeleteAsync(string id)
         {
-            await _cacheManager.RemoveAsync(GetCacheKey(id));
+            await _cache.RemoveByTagAsync(GetCacheKey(id));
         }
 
 
