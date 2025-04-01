@@ -1,4 +1,4 @@
-@DistributedCachingSample_HostAddress = http://localhost:5091
+@DistributedCachingSample_HostAddress = http://localhost:5017
 
 ### GET Book
 @getBookId = 1
@@ -14,7 +14,7 @@ Content-Type: application/json
 
 {
     "Id": "{{addBookId1}}",
-    "Name": "Hello World 中文字",
+    "Name": "Hello World 中文",
     "Author": "Human",
     "Publisher": "Earch",
     "Categories": [
@@ -52,6 +52,17 @@ Content-Type: application/json
     ]
 }
 
+###-----------------------------------------------------------------
+### Remove Book by Tag
+DELETE {{DistributedCachingSample_HostAddress}}/book/byTags
+Accept: application/json
+Content-Type: application/json
+
+{
+    "Tags": [
+        "Book:Category:Test2"
+    ]
+}
 
 ###-----------------------------------------------------------------
 ### Remove Book

@@ -1,6 +1,7 @@
-﻿using DistributedCachingSample.Models;
+﻿using DistributedCachingSample.Extensions;
+using DistributedCachingSample.Models;
 using Microsoft.AspNetCore.Mvc;
-using ZiggyCreatures.Caching.Fusion;
+using Microsoft.Extensions.Caching.Distributed;
 
 namespace DistributedCachingSample.Controllers
 {
@@ -9,11 +10,11 @@ namespace DistributedCachingSample.Controllers
     public class BookController : ControllerBase
     {
         private readonly ILogger<BookController> _logger;
-        private readonly IFusionCache _cache;
+        private readonly IDistributedCache _cache;
 
         public BookController(
             ILogger<BookController> logger,
-            IFusionCache cache)
+            IDistributedCache cache)
         {
             _logger = logger;
             _cache = cache;
@@ -22,7 +23,7 @@ namespace DistributedCachingSample.Controllers
         [HttpGet]
         public async Task<BookResponse> GetAsync(string id)
         {
-            var book = await _cache.GetOrDefaultAsync<Book>(GetCacheKey(id));
+            var book = await _cache.GetDataOrDefaultAsync<Book>(GetCacheKey(id));
             return new BookResponse(book);
         }
 
@@ -40,7 +41,7 @@ namespace DistributedCachingSample.Controllers
             var books = new List<Book>();
             foreach (var bookId in bookIds)
             {
-                var book = await _cache.GetOrDefaultAsync<Book>(bookId);
+                var book = await _cache.GetDataOrDefaultAsync<Book>(bookId);
                 if (book != null)
                 {
                     books.Add(book);
@@ -57,21 +58,8 @@ namespace DistributedCachingSample.Controllers
                 throw new ArgumentNullException(nameof(book));
             }
 
-            var tags = GetTags(book);
-            await _cache.SetAsync(GetCacheKey(book.Id), book, tags: tags);
+            await _cache.SetDataAsync(GetCacheKey(book.Id), book);
             return book;
-        }
-
-        [HttpDelete]
-        [Route("byTags")]
-        public async Task DeleteByTagAsync([FromBody] RefreshBookTagRequest refresh)
-        {
-            if (refresh == null || refresh.Tags == null || refresh.Tags.Count == 0)
-            {
-                throw new ArgumentNullException(nameof(refresh));
-            }
-
-            await _cache.RemoveByTagAsync(refresh.Tags);
         }
 
 
@@ -79,39 +67,13 @@ namespace DistributedCachingSample.Controllers
         [Route("{id}")]
         public async Task DeleteAsync(string id)
         {
-            await _cache.RemoveByTagAsync(GetCacheKey(id));
+            await _cache.RemoveAsync(GetCacheKey(id));
         }
 
 
         private string GetCacheKey(string id)
         {
             return $"Library:Default:{id}";
-        }
-
-        private List<string> GetTags(Book book)
-        {
-            var tags = new List<string>();
-
-            if (book == null)
-            {
-                return tags;
-            }
-
-            if (!string.IsNullOrWhiteSpace(book.Author))
-            {
-                tags.Add($"Book:Author:{book.Author}");
-            }
-
-            if (!string.IsNullOrWhiteSpace(book.Publisher))
-            {
-                tags.Add($"Book:Publisher:{book.Publisher}");
-            }
-
-            if (book.Categories.Any(i => !string.IsNullOrWhiteSpace(i)))
-            {
-                tags.AddRange(book.Categories.Select(cat => $"Book:Category:{cat}"));
-            }
-            return tags;
         }
     }
 }

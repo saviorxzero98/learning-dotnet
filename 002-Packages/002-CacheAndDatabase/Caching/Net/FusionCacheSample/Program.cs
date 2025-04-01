@@ -1,4 +1,7 @@
-namespace DistributedCachingSample
+using FusionCacheSample.Factories;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+
+namespace FusionCacheSample
 {
     public class Program
     {
@@ -33,17 +36,23 @@ namespace DistributedCachingSample
 
         public static void ConfigureCaching(IServiceCollection services)
         {
-            // Memory Cache
-            //services.AddMemoryCache();
+            // Add Fusion Cache
+            services.AddFusionCache();
 
-            // Distributed Memory Cache
-            //services.AddDistributedMemoryCache();
+            // [L1] Memory Cache
+            services.AddMemoryCache();
 
-            // Distributed Redis
+            // [L2] Redis Cache
+            var redisConnection = "localhost:6379";
             services.AddStackExchangeRedisCache(options =>
             {
-                options.Configuration = "localhost:6379";
+                options.Configuration = redisConnection;
             });
+            services.AddFusionCacheStackExchangeRedisBackplane(options =>
+            {
+                options.Configuration = redisConnection;
+            });
+            services.TryAdd(ServiceDescriptor.Singleton<IFusionCacheFactory, RedisFusionCacheFactory>());
         }
     }
 }
