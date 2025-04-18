@@ -1,4 +1,5 @@
-﻿using EntityFrameworkPerformance.EntityFrameworkCore;
+﻿using EntityFrameworkPerformance.Entities;
+using EntityFrameworkPerformance.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -21,15 +22,32 @@ namespace EntityFrameworkPerformance.Test
         }
 
         [Fact]
+        public async Task TestGetUserMessage2Async()
+        {
+            using var context = CreateDbContext();
+
+            var users = await context.Users
+                                        .AsNoTracking()
+                                        .Select(x => new User() { Id = x.Id, Name = x.Name })
+                                        .Skip(0).Take(10)
+                                        .ToListAsync();
+        }
+
+
+        [Fact]
         public async Task TestGetUserMessageAsync()
         {
+
+
+
             using (var context = CreateDbContext())
             {
                 var startTime = DateTime.Now;
 
                 var users = await context.Users
                                          .AsNoTracking()
-                                         .Where(u => u.IsActived)
+                                         .Select(x => new User() { Id = x.Id, Name = x.Name })
+                                         .Skip(0).Take(10)
                                          .ToListAsync();
 
                 foreach (var user in users)
