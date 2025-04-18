@@ -1,0 +1,8 @@
+@hostUrl = http://localhost:5285
+
+### Get Demo
+GET {{hostUrl}}/demo
+
+
+### Add Demo
+POST {{hostUrl}}/demo

@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F9A355D4-27E6-4DB4-A550-07E7F955F5D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatAlt", "src\MediatAlt\MediatAlt.csproj", "{0D20F26D-3E0C-4217-9AB7-0D78BF8E7DD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{7FC4718C-86CE-474C-8ECE-37E66DFAB454}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatAltSample", "samples\MediatAltSample\MediatAltSample.csproj", "{7B6F31F1-0217-4F3E-AFB1-28D1024F0DD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D20F26D-3E0C-4217-9AB7-0D78BF8E7DD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D20F26D-3E0C-4217-9AB7-0D78BF8E7DD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D20F26D-3E0C-4217-9AB7-0D78BF8E7DD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D20F26D-3E0C-4217-9AB7-0D78BF8E7DD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B6F31F1-0217-4F3E-AFB1-28D1024F0DD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B6F31F1-0217-4F3E-AFB1-28D1024F0DD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B6F31F1-0217-4F3E-AFB1-28D1024F0DD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B6F31F1-0217-4F3E-AFB1-28D1024F0DD5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0D20F26D-3E0C-4217-9AB7-0D78BF8E7DD0} = {F9A355D4-27E6-4DB4-A550-07E7F955F5D5}
+		{7B6F31F1-0217-4F3E-AFB1-28D1024F0DD5} = {7FC4718C-86CE-474C-8ECE-37E66DFAB454}
+	EndGlobalSection
+EndGlobal
