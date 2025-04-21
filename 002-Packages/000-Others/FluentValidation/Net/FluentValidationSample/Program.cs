@@ -20,11 +20,35 @@ namespace FluentValidationSample
                 }
             };
 
+            var orders = new List<Order>()
+            {
+                new Order()
+                {
+                    Id = Guid.NewGuid().ToString()
+                },
+                new Order()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Customer = new Customer()
+                },
+                new Order()
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Customer = new Customer()
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Name = "Test"
+                    }
+                }
+            };
 
-            DemoValidate(products);
+
+            ValidateProducts(products);
+            ValidateOrders(orders);
         }
 
-        static void DemoValidate(List<Product> products)
+
+        static void ValidateProducts(List<Product> products)
         {
             var vaildator = new ProductValidator();
 
@@ -47,7 +71,31 @@ namespace FluentValidationSample
 
                 Console.WriteLine();
             }
+        }
+    
+        static void ValidateOrders(List<Order> orders)
+        {
+            var vaildator = new OrderValidator();
 
+            for (int i = 0; i < orders.Count; i++)
+            {
+                Console.WriteLine($"驗證訂單 {i + 1}");
+
+                var order = orders[i];
+                var result = vaildator.Validate(order);
+
+                if (result.IsValid)
+                {
+                    Console.WriteLine($"訂單 {i + 1} 是合法的");
+                }
+                else
+                {
+                    var errorMessages = result.Errors.Select(x => x.ErrorMessage.Replace("'", string.Empty)).ToList();
+                    Console.WriteLine(string.Join("\n", errorMessages));
+                }
+
+                Console.WriteLine();
+            }
         }
     }
 }
