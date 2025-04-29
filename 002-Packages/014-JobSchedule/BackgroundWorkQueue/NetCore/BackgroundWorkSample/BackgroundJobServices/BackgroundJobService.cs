@@ -25,7 +25,7 @@ namespace BackgroundJobServices
             {
                 var job = await _jobQueue.DequeueAsync(cancellationToken);
 
-                Task task = new Task(async () =>
+                Task task = Task.Run(async () =>
                 {
                     try
                     {
