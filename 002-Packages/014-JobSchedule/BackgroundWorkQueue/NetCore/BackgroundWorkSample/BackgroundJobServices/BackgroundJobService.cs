@@ -36,7 +36,6 @@ namespace BackgroundJobServices
                         await job.OnExceptionAsync(e, cancellationToken).ConfigureAwait(false);
                     }
                 });
-                task.Start();
             }
         }
 
