@@ -1,4 +1,4 @@
-using BackgroundWorkSample.BackgroundServices;
+using BackgroundJobServices.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,8 +21,8 @@ namespace BackgroundWorkSample
         {
             services.AddControllers();
 
-            // 加入 Background Service
-            services.AddBackgroundService();
+            // 加入 Background Job Service
+            services.AddBackgroundJobService();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

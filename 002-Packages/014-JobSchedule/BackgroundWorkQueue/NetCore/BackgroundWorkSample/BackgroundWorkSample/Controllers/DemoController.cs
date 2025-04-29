@@ -14,7 +14,8 @@ namespace BackgroundWorkSample.Controllers
         {
             string message = "執行 Big Job";
 
-            await BigJob.ExecuteAsync("Sync", message, 10000);
+            var job = new BigJob("Sync", message, 10000);
+            await job.ExecuteAsync();
 
             return Ok(message);
         }
