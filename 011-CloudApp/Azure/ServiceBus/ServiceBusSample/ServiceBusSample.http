@@ -1,0 +1,54 @@
+@HostUrl = http://localhost:5033
+
+### Demo
+GET {{HostUrl}}/demo/
+
+
+### Send Message
+POST {{HostUrl}}/message/
+Content-Type: application/json
+
+{
+    "Content": "Hello"
+}
+
+### Get Message
+GET {{HostUrl}}/message/
+
+
+### Enqueue Job
+POST {{HostUrl}}/job/Enqueue
+Content-Type: application/json
+
+{
+    "Name": "Demo",
+    "FunctionName": "DemoEnqueue",
+    "Arguments": []
+}
+
+
+### Batch Enqueue Job
+POST {{HostUrl}}/job/Enqueue/Batch
+Content-Type: application/json
+
+[
+    {
+        "Name": "DemoA",
+        "FunctionName": "DemoEnqueueA",
+        "Arguments": []
+    },
+    {
+        "Name": "DemoB",
+        "FunctionName": "DemoEnqueueB",
+        "Arguments": []
+    },
+    {
+        "Name": "DemoC",
+        "FunctionName": "DemoEnqueueC",
+        "Arguments": []
+    }
+]
+
+
+### Dequeue Job
+POST {{HostUrl}}/job/Dequeue

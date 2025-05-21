@@ -1,0 +1,11 @@
+**/Release
+**/Debug
+**/obj
+**/.vs
+**/packages
+**/bin
+*.suo
+*.user
+*.project
+*.pubxml
+**/appsettings.development.json
