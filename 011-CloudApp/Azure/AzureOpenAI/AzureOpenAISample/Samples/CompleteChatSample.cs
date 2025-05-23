@@ -11,7 +11,10 @@ namespace AzureOpenAISample.Samples
 
         protected override async Task HandleAsync(ChatClient chatClient)
         {
-            var messages = new List<ChatMessage>();
+            var messages = new List<ChatMessage>()
+            {
+                new SystemChatMessage("請以繁體中文回答問題")
+            };
 
             while (true)
             {
